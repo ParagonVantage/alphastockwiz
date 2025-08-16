@@ -1,0 +1,16 @@
+[
+  {
+    "title": "My New Post",
+    "slug": "2025-08-21-my-new-post",
+    "date": "2025-08-21",
+    "summary": "One-line teaser for the blog list.",
+    "path": "assets/posts/post1.html"                
+  },
+  {
+    "title": "Weekly View: Banks & Liquidity",
+    "slug": "2025-08-14-banks-liquidity",
+    "date": "2025-08-14",
+    "summary": "Credit growth trends, CASA mix, and what to track into quarter-end.",
+    "path": "assets/posts/blogtest.html"
+  }
+]
