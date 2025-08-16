@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TITLE}} — StockLens</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script defer src="posts/post.js"></script>
+</head>
+<body>
+  <!-- Use your site header; paths adjusted with ../ -->
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+  <aside class="drawer">
+    <button class="drawer-close" id="closeDrawer">&times;</button>
+    <nav class="drawer-nav">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="../onboard.html" class="nav-link">Client Onboarding</a>
+      <a href="../reports.html" class="nav-link">Reports</a>
+      <a href="../blog.html" class="nav-link">Blog</a>
+      <a href="../services.html" class="nav-link">Services</a>
+      <a href="../bio.html" class="nav-link">Bio</a>
+    </nav>
+    <div class="drawer-foot">
+      <p class="small">SEBI Reg. No.: INH000022312</p>
+      <a class="badge" href="../assets/docs/INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <button id="openDrawer" class="hamburger" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="brand">
+      <h1>StockLens</h1>
+      <p class="tag">Research • Reports • Insights</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card" data-slug="{{SLUG}}">
+      <h2>{{TITLE}}</h2>
+      <p class="muted">{{DATE}}</p>
+
+      <div class="post-body">
+        <!-- Replace this dummy content with the real article -->
+        <p>Intro paragraph…</p>
+        <p>Body content…</p>
+      </div>
+
+      <nav class="post-nav">
+        <a class="btn ghost" id="prevPost" href="#">← Previous</a>
+        <span></span>
+        <a class="btn ghost" id="nextPost" href="#">Next →</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="../blog.html" class="btn">Back to Blog</a>
+    </div>
+  </footer>
+
+  <script defer src="../assets/js/app.js"></script>
+</body>
+</html>

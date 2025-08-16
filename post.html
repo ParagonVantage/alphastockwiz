@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TITLE}} — StockLens</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="assets/js/post.js"></script>
+</head>
+<body>
+  <!-- same header as other pages, but change paths to "../" where needed -->
+  <header class="site-header">
+    <a href="index.html" class="btn ghost">← Home</a>
+    <div class="brand"><h1>StockLens</h1><p class="tag">Research • Reports • Insights</p></div>
+  </header>
+
+  <main class="container">
+    <article class="card" data-slug="{{SLUG}}">
+      <h2>{{TITLE}}</h2>
+      <p class="muted">{{DATE}}</p>
+      <div class="post-body">
+        <!-- Replace the dummy paragraphs with the real blog content -->
+        <p>Dummy content. Replace with your article.</p>
+      </div>
+
+      <nav class="post-nav">
+        <a class="btn ghost" id="prevPost" href="#">← Previous</a>
+        <span></span>
+        <a class="btn ghost" id="nextPost" href="#">Next →</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="blog.html" class="btn">Back to Blog</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StockLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+  <aside class="drawer" aria-label="Site">
+    <button class="drawer-close" id="closeDrawer" aria-label="Close navigation">&times;</button>
+    <nav class="drawer-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="onboard.html" class="nav-link">Client Onboarding</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="bio.html" class="nav-link">Bio</a>
+    </nav>
+    <div class="drawer-foot">
+      <p class="small">SEBI Reg. No.: INH000022312<br/>Research Analyst (Part‑time)</p>
+      <a class="badge" href="assets/docs/INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <button id="openDrawer" class="hamburger" aria-label="Open navigation" aria-controls="overlay" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="brand">
+      <h1>StockLens</h1>
+      <p class="tag">Research • Reports • Insights</p>
+    </div>
+  </header>
+
+  <main class="container">
+  <section class="card">
+    <h2>Blog</h2>
+    <div id="postList" class="grid-3"></div>
+    <div class="btn-row" id="pager" style="margin-top:1rem;"></div>
+  </section>
+</main>
+<script>
+(async function(){
+  const PAGE_SIZE = 6;
+
+  function showError(msg){
+    const holder = document.querySelector('.card');
+    const el = document.createElement('div');
+    el.className = 'muted';
+    el.style.marginTop = '0.5rem';
+    el.textContent = msg;
+    holder.appendChild(el);
+  }
+
+  try {
+    const url = new URL(location.href);
+    const page = Math.max(1, parseInt(url.searchParams.get('page') || '1', 10));
+
+    // Try a couple of path variants
+    const candidates = ['assets/posts/index.json', './assets/posts/index.json'];
+    let posts = null, lastErr = null;
+    for (const c of candidates) {
+      try {
+        const res = await fetch(c, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status} for ${c}`);
+        posts = await res.json();
+        break;
+      } catch(e){ lastErr = e; }
+    }
+    if (!posts) throw lastErr || new Error('Unable to load index.json');
+    if (!Array.isArray(posts)) throw new Error('index.json must be a JSON array.');
+
+    const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+    const start = (page - 1) * PAGE_SIZE;
+    const slice = posts.slice(start, start + PAGE_SIZE);
+
+    const list = document.getElementById('postList');
+    list.innerHTML = slice.map(p => `
+      <article class="card">
+        <h3>${p.title}</h3>
+        <p class="muted">${p.date}</p>
+        <p>${p.summary}</p>
+        <a class="text-link" href="${p.path}">Read →</a>
+      </article>
+    `).join('');
+
+    const pager = document.getElementById('pager');
+    const prev = page > 1 ? `<a class="btn" href="blog.html?page=${page-1}">← Newer</a>` : '';
+    const next = page < totalPages ? `<a class="btn" href="blog.html?page=${page+1}">Older →</a>` : '';
+    pager.innerHTML = `${prev} ${next}`;
+
+  } catch(err){
+    console.error(err);
+    showError('Could not load blog index. Check that /assets/posts/index.json exists, is valid JSON, and the site is served from the project root.');
+  }
+})();
+</script>
+
+
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>StockLens</strong><br/>
+        <span class="muted">SEBI‑Registered Research Analyst (Part‑time)<br/>Reg. No. INH000022312</span>
+      </div>
+      <div class="footer-links">
+        <a href="onboard.html">Start Onboarding</a>
+        <a href="reports.html">Latest Reports</a>
+        <a href="services.html">Services</a>
+        <a href="bio.html">About</a>
+      </div>
+    </div>
+    <div class="legal small">
+      <span>Educational intent. Not investment advice. Markets involve risk—including loss of principal.</span>
+    </div>
+  </footer>
+</body>
+</html>

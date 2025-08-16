@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StockLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+  <aside class="drawer" aria-label="Site">
+    <button class="drawer-close" id="closeDrawer" aria-label="Close navigation">&times;</button>
+    <nav class="drawer-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="onboard.html" class="nav-link">Client Onboarding</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="bio.html" class="nav-link">Bio</a>
+    </nav>
+    <div class="drawer-foot">
+      <p class="small">SEBI Reg. No.: INH000022312<br/>Research Analyst (Part‑time)</p>
+      <a class="badge" href="assets/docs/INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <button id="openDrawer" class="hamburger" aria-label="Open navigation" aria-controls="overlay" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="brand">
+      <h1>StockLens</h1>
+      <p class="tag">Research • Reports • Insights</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>About / Bio</h2>
+      <p class="muted">A brief professional biography and methodology will appear here.</p>
+      
+      <p>Default placeholder content. Replace this with real copy later.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>StockLens</strong><br/>
+        <span class="muted">SEBI‑Registered Research Analyst (Part‑time)<br/>Reg. No. INH000022312</span>
+      </div>
+      <div class="footer-links">
+        <a href="onboard.html">Start Onboarding</a>
+        <a href="reports.html">Latest Reports</a>
+        <a href="services.html">Services</a>
+        <a href="bio.html">About</a>
+      </div>
+    </div>
+    <div class="legal small">
+      <span>Educational intent. Not investment advice. Markets involve risk—including loss of principal.</span>
+    </div>
+  </footer>
+</body>
+</html>
