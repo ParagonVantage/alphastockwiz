@@ -1,5 +1,5 @@
 
-# StockLens — static site (MVP)
+# AlphaStockWiz — static site (MVP)
 
 This is a lightweight, two-tone (purple/white) static website scaffold with a sleek side pop-up navigation, a banner header, and pages for:
 - Home
