@@ -142,7 +142,7 @@ input[type="text"], input[type="number"], input[type="email"], input[type="tel"]
 /* Chatbot STEVE */
 .steve-toggle{
   position:fixed;
-  bottom:1rem;
+  bottom:200px;
   right:1rem;
   background:var(--purple);
   color:#fff;
