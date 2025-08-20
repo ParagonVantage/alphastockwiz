@@ -138,3 +138,50 @@ input[type="text"], input[type="number"], input[type="email"], input[type="tel"]
   margin-top: 1rem;
 }
 .post-body p{ line-height: 1.75; }
+
+/* Chatbot STEVE */
+.steve-toggle{
+  position:fixed;
+  bottom:1rem;
+  right:1rem;
+  background:var(--purple);
+  color:#fff;
+  border:0;
+  border-radius:30px;
+  padding:.6rem 1rem;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  z-index:100;
+}
+
+.steve-window{
+  position:fixed;
+  bottom:4rem;
+  right:1rem;
+  width:280px;
+  max-height:60vh;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  transform:translateY(120%);
+  transition:transform .3s ease;
+  z-index:100;
+}
+.steve-window.open{ transform:translateY(0); }
+.steve-header{
+  background:var(--purple);
+  color:#fff;
+  padding:.5rem 1rem;
+  border-radius:12px 12px 0 0;
+  font-weight:600;
+}
+.steve-messages{ flex:1; padding:.5rem; overflow-y:auto; }
+.steve-form{ display:flex; border-top:1px solid var(--border); }
+.steve-form input{ flex:1; border:0; padding:.5rem; }
+.steve-form button{ border:0; background:var(--purple); color:#fff; padding:.5rem 1rem; }
+.msg{ margin:.4rem 0; }
+.msg.user{ text-align:right; }
+.msg.bot{ color:var(--purple); }
