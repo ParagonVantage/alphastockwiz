@@ -38,6 +38,41 @@
     </div>
   </header>
 
+
+  <div class="header-ticker">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const cfg = {
+    "symbols": [
+    {"proName": "NYSE:HDB",   "title": "HDFC Bank ADR"},
+    {"proName": "NYSE:INFY",  "title": "Infosys ADR"},
+    {"proName": "NYSE:WIT",   "title": "Wipro ADR"},
+    {"proName": "NYSE:IBN",   "title": "ICICI Bank ADR"},
+    {"proName": "NASDAQ:INDY","title": "iShares India 50 ETF"},
+    {"proName": "NYSE:INDA",  "title": "iShares MSCI India"},
+    {"proName": "NYSE:EPI",   "title": "WisdomTree India Earnings"},
+    {"proName": "NYSE:SMIN",  "title": "iShares MSCI India Small-Cap"}
+  ],
+    showSymbolLogo: true,
+    colorTheme: "dark",
+    isTransparent: true,
+    displayMode: "adaptive",
+    locale: "en"
+  };
+
+  const s = document.createElement('script');
+  s.src = "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+  s.async = true;
+  s.innerHTML = JSON.stringify(cfg); // <— TradingView reads this JSON from the tag
+  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+})();
+</script>
+  
   <main class="container">
     <section class="card">
       <h2>Reports</h2>
