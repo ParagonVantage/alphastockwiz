@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Tools & Calculators – AlphaStockWiz</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="assets/js/app.js"></script>
+  <meta name="description" content="Position sizing, SIP planner, and charges estimator for Indian markets (indicative, educational).">
+</head>
+
+<body>
+<div id="overlay" class="overlay" aria-hidden="true"></div>
+  <aside class="drawer" aria-label="Site">
+    <button class="drawer-close" id="closeDrawer" aria-label="Close navigation">&times;</button>
+    <nav class="drawer-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="onboard.html" class="nav-link">Client Onboarding</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="bio.html" class="nav-link">Bio</a>
+      <a class="nav-link" href="tools.html">Tools & Calculators</a>
+
+    </nav>
+    <div class="drawer-foot">
+      <p class="small">SEBI Reg. No.: INH000022312<br/>Research Analyst (Part‑time)</p>
+      <a class="badge" href="assets/docs/INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <button id="openDrawer" class="hamburger" aria-label="Open navigation" aria-controls="overlay" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="brand">
+      <h1>AlphaStockWiz</h1>
+      <p class="tag">Research • Reports • Insights</p>
+    </div>
+  </header>
+
+
+  <main id="main" class="container">
+    <!-- Position Sizing -->
+    <section id="position-sizing" class="card">
+      <h2 class="mt-0">Position Sizing</h2>
+      <p class="muted">Educational only. No investment advice.</p>
+      <form class="form" id="ps-form">
+        <div class="form-grid-3">
+          <label>Capital (₹)
+            <input type="number" id="ps-capital" min="0" step="0.01" required>
+          </label>
+          <label>Risk % per trade
+            <input type="number" id="ps-risk" min="0" max="100" step="0.1" value="1" required>
+          </label>
+          <label>Entry Price (₹)
+            <input type="number" id="ps-entry" min="0" step="0.01" required>
+          </label>
+        </div>
+        <div class="form-grid-3">
+          <label>Stop‑Loss Price (₹)
+            <input type="number" id="ps-stop" min="0" step="0.01" required>
+          </label>
+          <label>Lot Size (optional)
+            <input type="number" id="ps-lot" min="1" step="1" placeholder="e.g., 25">
+          </label>
+          <div class="form-row">
+            <label>&nbsp;</label>
+            <button type="button" class="btn primary" id="ps-run">Calculate</button>
+          </div>
+        </div>
+      </form>
+      <div class="table-wrap mt-2">
+        <table class="table table-responsive">
+          <thead><tr><th>Qty</th><th>Max Loss (₹)</th><th>R:R at Target</th></tr></thead>
+          <tbody id="ps-out">
+            <tr>
+              <td data-label="Qty"><span class="skeleton" style="display:inline-block;width:80px;height:16px;"></span></td>
+              <td data-label="Max Loss"><span class="skeleton" style="display:inline-block;width:120px;height:16px;"></span></td>
+              <td data-label="R:R at Target">
+                <input type="number" id="ps-target" step="0.01" placeholder="Target price (₹)" class="input mt-1" />
+                <div id="ps-rr" class="muted mt-1">—</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SIP -->
+    <section id="sip" class="card mt-2">
+      <h2 class="mt-0">SIP / Step‑Up SIP</h2>
+      <form class="form" id="sip-form">
+        <div class="form-grid-3">
+          <label>Monthly SIP (₹)
+            <input type="number" id="sip-amount" min="0" step="1" required>
+          </label>
+          <label>Expected Return % (annual)
+            <input type="number" id="sip-rate" min="0" step="0.1" value="12" required>
+          </label>
+          <label>Years
+            <input type="number" id="sip-years" min="1" step="1" value="10" required>
+          </label>
+        </div>
+        <div class="form-grid-3">
+          <label>Yearly Step‑Up % (optional)
+            <input type="number" id="sip-step" min="0" step="0.5" placeholder="e.g., 5">
+          </label>
+          <div class="form-row"><label>&nbsp;</label><button type="button" class="btn primary" id="sip-run">Calculate</button></div>
+        </div>
+      </form>
+      <div class="status" id="sip-out" aria-live="polite"></div>
+    </section>
+
+    <!-- Charges -->
+    <section id="charges" class="card mt-2">
+      <h2 class="mt-0">Charges Estimator (Indicative)</h2>
+      <p class="muted small">Not exchange‑licensed. Values are approximate and editable.</p>
+      <form class="form" id="chg-form">
+        <div class="form-grid-3">
+          <label>Turnover (₹ buy+sell)
+            <input type="number" id="chg-turnover" min="0" step="0.01" required>
+          </label>
+          <label>STT % (edit)
+            <input type="number" id="chg-stt" min="0" step="0.001" value="0.1">
+          </label>
+          <label>Brokerage (₹ or %)
+            <input type="text" id="chg-broker" placeholder="e.g., 20 or 0.03%">
+          </label>
+        </div>
+        <div class="form-grid-2">
+          <label>Stamp Duty % (edit)
+            <input type="number" id="chg-stamp" min="0" step="0.001" value="0.003">
+          </label>
+          <label>GST % on charges
+            <input type="number" id="chg-gst" min="0" step="0.1" value="18">
+          </label>
+        </div>
+        <button type="button" class="btn primary" id="chg-run">Estimate</button>
+      </form>
+      <div class="status" id="chg-out" aria-live="polite"></div>
+      <div class="alert warn mt-1 small">Educational only. Verify with your broker before trading.</div>
+    </section>
+
+    <!-- Holidays -->
+    <section id="holidays" class="card mt-2">
+      <h2 class="mt-0">Market Holidays & Expiry (Manual)</h2>
+      <p class="muted small">You’ll update a small JSON once a year; this page renders it nicely and offers an .ics file.</p>
+      <div id="hol-out" class="mt-1"></div>
+      <div class="btn-row mt-1">
+        <a class="btn ghost" href="/data/holidays.ics" download>Download .ics</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- reuse your footer -->
+  <footer class="site-footer"><div class="footer-inner">…</div></footer>
+
+  <script type="module" src="/assets/js/tools.js"></script>
+</body>
+</html>
