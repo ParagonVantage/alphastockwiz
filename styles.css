@@ -33,6 +33,7 @@ a:hover{ text-decoration: underline; }
   background: linear-gradient(120deg, var(--purple), #a78bfa 60%);
   color: #fff;
   box-shadow: var(--shadow);
+  padding-bottom: max(4rem, env(safe-area-inset-bottom));
 }
 .brand h1{ margin:0; font-size: clamp(1.6rem, 2.8vw, 2.4rem); font-weight:700; letter-spacing: .3px; }
 .brand .tag{ margin:.15rem 0 0; opacity:.9; }
@@ -48,6 +49,7 @@ a:hover{ text-decoration: underline; }
 
 /* Drawer / side pop-up nav */
 .overlay{
+  backdrop-filter: blur(1px);
   position: fixed; inset:0; background: rgba(0,0,0,.35);
   opacity:0; pointer-events:none; transition: opacity .25s ease;
 }
@@ -57,6 +59,7 @@ a:hover{ text-decoration: underline; }
   position: fixed; inset:0 auto 0 0; width: 310px; max-width: 90vw;
   background: #0f1020; color:#fff; transform: translateX(-100%);
   transition: transform .3s ease; z-index: 50; display:flex; flex-direction:column;
+  box-shadow: 18px 0 38px rgba(0,0,0,16); will-change: transform;
 }
 .drawer.open{ transform: translateX(0); }
 .drawer-close{
@@ -66,6 +69,8 @@ a:hover{ text-decoration: underline; }
 .nav-link{
   display:block; padding: .9rem 1rem; border-radius: 12px; color:#fff; background: transparent;
 }
+.drawer .nav-link {transition: background-color .16s ease;}
+.drawer .nav-link:active { background: rgba(255, 255, 255, .12);}
 .nav-link:hover{ background: rgba(255,255,255,.08); text-decoration: none; }
 .drawer-foot{ margin-top:auto; padding: 1rem; border-top:1px solid rgba(255,255,255,.12); }
 .badge{ display:inline-block; padding:.35rem .6rem; border-radius:999px; background: #fff; color:#0f1020; font-weight:600; }
@@ -76,13 +81,18 @@ a:hover{ text-decoration: underline; }
   background: var(--card); border:1px solid var(--border); border-radius: 18px; padding: 1.2rem 1.2rem;
   box-shadow: var(--shadow);
 }
-.hero{ display:grid; grid-template-columns: 1.3fr .9fr; gap: 1rem; align-items:center; padding-top: 100px;}
+/* Cards + links feel “alive” on hover */
+.card { will-change: transform; }
+.card:hover { transform: translateY(-2px); }
+.link-soft { display:inline-block; border-radius:10px; padding:.15rem .35rem; }
+.link-soft:hover { background:#f4f3ff; text-decoration:none; }
+.hero{ display:grid; grid-template-columns: 1.3fr .9fr; gap: 1rem; align-items:center; padding-top: 100px; line-height: 1.3;}
 .hero h2{ margin: .2rem 0 .5rem; font-size: clamp(1.2rem, 2.4vw, 1.8rem); }
 .cta-row{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.8rem; }
 .kpi{ background: var(--purple-100); color:#2b1b7b; padding:.8rem 1rem; border-radius: 14px; text-align:center; }
 .kpi-num{ display:block; font-size: 1.2rem; font-weight:700; }
 .kpi-label{ font-size:.8rem; opacity:.85; }
-
+.hero .lead {color: var(--muted); margin-top: .25rem}
 .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
 
 /* Buttons */
@@ -90,7 +100,12 @@ a:hover{ text-decoration: underline; }
 .btn.primary{ background: var(--purple); color:#fff; border-color: transparent; }
 .btn.primary:hover{ background: var(--purple-600); }
 .btn.ghost{ background: transparent; }
-.btn.ghost:hover{ border-color:#c7c9d1; }
+.btn.ghost:hover { border-color: #d7daf0; background: #fafaff; }
+/* Buttons: pressed + disabled states */
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn[disabled], .btn.disabled { opacity:.55; cursor:not-allowed; transform:none !important; }
+
 
 /* Forms */
 .form{ display:flex; flex-direction:column; gap:.9rem; }
@@ -113,6 +128,21 @@ input[type="text"], input[type="number"], input[type="email"], input[type="tel"]
 .table{ width:100%; border-collapse: collapse; }
 .table th, .table td{ text-align:left; padding:.7rem .6rem; border-bottom:1px solid var(--border); }
 .table th{ background:#fafafa; position: sticky; top:0; }
+/* Sticky header gets a soft shadow when scrolled */
+.table thead th { z-index: 1; }
+.table thead::after {
+  content:"";
+  position: sticky; top: 0; display:block; height: 0; box-shadow: 0 6px 10px rgba(0,0,0,.05);
+}
+
+/* Optional responsive variant: add class 'table-responsive' to table when needed */
+@media (max-width: 700px) {
+  .table.table-responsive { border-collapse: separate; border-spacing: 0 10px; }
+  .table.table-responsive thead { display: none; }
+  .table.table-responsive tr { display: block; background: var(--card); border:1px solid var(--border); border-radius:14px; padding:.5rem .25rem; }
+  .table.table-responsive td { display: grid; grid-template-columns: 130px 1fr; gap:.5rem; border:0; padding:.55rem .8rem; }
+  .table.table-responsive td::before { content: attr(data-label); color: var(--muted); font-weight:600; }
+}
 
 /* Footer */
 .site-footer{ margin: 2rem 0 0; padding:1rem 1rem 2rem; border-top:1px solid var(--border); background:#fff; }
@@ -156,7 +186,7 @@ input[type="text"], input[type="number"], input[type="email"], input[type="tel"]
 
 .steve-window{
   position:fixed;
-  bottom:4rem;
+  bottom:2rem;
   right:1rem;
   width:280px;
   max-height:60vh;
@@ -169,23 +199,25 @@ input[type="text"], input[type="number"], input[type="email"], input[type="tel"]
   transform:translateY(120%);
   transition:transform .3s ease;
   z-index:100;
+  overscroll-behavior: contain;
 }
 .steve-window.open{ transform:translateY(0); }
 .steve-header{
   background:var(--purple);
   color:#fff;
-  padding:.5rem 1rem;
+  padding:.6rem 1rem;
   border-radius:12px 12px 0 0;
   font-weight:600;
+  position: sticky; top: 0;
 }
-.steve-messages{ flex:1; padding:.5rem; overflow-y:auto; }
+.steve-messages{ flex:1; padding:.5rem; overflow-y:auto; scroll-behavior: smooth;}
 .steve-form{ display:flex; border-top:1px solid var(--border); }
+.steve-form input::placeholder {color: var(--muted);}
 .steve-form input{ flex:1; border:0; padding:.5rem; }
 .steve-form button{ border:0; background:var(--purple); color:#fff; padding:.5rem 1rem; }
 .msg{ margin:.4rem 0; }
 .msg.user{ text-align:right; }
 .msg.bot{ color:var(--purple); }
-
 
 .header-ticker{
   background:#0b0f14;
@@ -194,3 +226,85 @@ input[type="text"], input[type="number"], input[type="email"], input[type="tel"]
 }
 @media (max-width:640px){ .header-ticker{ display:none; } }
 
+/* Strong, theme-consistent focus */
+:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Make links/buttons clearly focusable */
+a, button, .btn, .nav-link, .hamburger, .drawer-close {
+  transition: transform .12s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+}
+a:focus-visible, .btn:focus-visible, .nav-link:focus-visible, .hamburger:focus-visible, .drawer-close:focus-visible {
+  box-shadow: 0 0 0 4px rgba(111,60,255,.18);
+}
+
+/* (optional HTML) Skip link style if you add <a class="skip-link" href="#main">Skip to content</a> */
+.skip-link {
+  position: absolute; left: -9999px; top: auto;
+  background:#fff; color:#000; padding:.6rem .9rem; border-radius:10px; box-shadow: var(--shadow);
+}
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 9999; }
+
+/* Tone down heavy blur on low-end devices (perf) */
+@media (prefers-reduced-transparency: reduce) {
+  .hamburger { background: rgba(255,255,255,.25); backdrop-filter: none; }
+}
+
+/* Focus + error/success states you can toggle via a class */
+input[type], select, textarea {
+  transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+.input-success, .form .input-success { border-color: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.15); }
+.input-error, .form .input-error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.15); }
+
+/* Touch-friendly tap targets on narrow screens */
+@media (max-width: 700px) {
+  input[type], select, textarea { padding:.9rem 1rem; }
+  .btn { padding:.85rem 1rem; }
+}
+
+/* Spacing */
+.mt-0{margin-top:0}.mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}
+.mb-0{margin-bottom:0}.mb-1{margin-bottom:.5rem}.mb-2{margin-bottom:1rem}.mb-3{margin-bottom:1.5rem}
+.p-0{padding:0}.p-1{padding:.5rem}.p-2{padding:1rem}.p-3{padding:1.5rem}
+
+/* Text helpers */
+.text-center{text-align:center}.text-right{text-align:right}
+.text-muted{color:var(--muted)}
+.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; background:#f3f4f6; border:1px solid #e5e7eb; border-bottom-width:2px; padding:.1rem .35rem; border-radius:6px}
+
+/* Chips/Badges in your palette */
+.chip{display:inline-flex;align-items:center;gap:.4ch;padding:.25rem .6rem;border-radius:999px;background:var(--purple-100);color:#2b1b7b;font-weight:600}
+
+.tooltip { position: relative; cursor: help; }
+.tooltip[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute; inset: auto auto calc(100% + 8px) 50%;
+  transform: translateX(-50%); white-space: nowrap;
+  background:#0f1020; color:#fff; border-radius:8px; padding:.35rem .6rem;
+  font-size:.82rem; opacity:0; pointer-events:none; transition: opacity .15s ease;
+  border:1px solid rgba(255,255,255,.12);
+}
+.tooltip:hover::after, .tooltip:focus-within::after { opacity:1; }
+
+.skeleton {
+  position: relative; overflow: hidden; border-radius: 10px;
+  background: linear-gradient(90deg, #f0f1ff 25%, #ebeaff 37%, #f0f1ff 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.2s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer { 0%{background-position: 100% 0} 100%{background-position: 0 0} }
+
+@media print {
+  .site-header, .hamburger, .overlay, .drawer, .steve-toggle, .steve-window { display: none !important; }
+  .btn { display:none !important; }
+  a { color:#000; text-decoration: underline; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+  body { background: #fff; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
