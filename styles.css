@@ -495,3 +495,9 @@ input[type], select, textarea {
     content: attr(data-label); color: var(--muted); font-weight:600;
   }
 }
+
+#strategy-playground .table th{background:#fafafa}
+#strategy-playground canvas{width:100%;height:200px;border:1px solid var(--border);border-radius:12px;background:#fff}
+#capital-gains .hint{font-size:.82rem}
+#capital-gains .table th{background:#fafafa}
+#capital-gains .text-muted{color:var(--muted)}
