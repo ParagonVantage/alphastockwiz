@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <title>Tools & Calculators – AlphaStockWiz</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="app.js"></script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="assets/js/app.js"></script>
   <meta name="description" content="Position sizing, SIP planner, and charges estimator for Indian markets (indicative, educational).">
 </head>
 
@@ -141,21 +141,152 @@
       <div class="alert warn mt-1 small">Educational only. Verify with your broker before trading.</div>
     </section>
 
-    <!-- Holidays -->
+    <!-- <section id="strategy-playground" class="card mt-2">
+<h2 class="mt-0">Strategy Playground (CSV‑based)</h2>
+<p class="muted small">Upload an EOD CSV (Date + Close). Map columns, choose SMAs, and backtest a basic crossover. Educational only — not investment advice.</p>
+
+
+<div class="form" id="sp-form">
+<div class="form-grid-3">
+<label>CSV File (EOD)
+<input type="file" id="sp-file" accept=".csv" />
+</label>
+<label>Short SMA (days)
+<input type="number" id="sp-sma-short" min="2" step="1" value="50" />
+</label>
+<label>Long SMA (days)
+<input type="number" id="sp-sma-long" min="5" step="1" value="200" />
+</label>
+</div>
+
+
+<div class="form-grid-3">
+<label>Date Column
+<select id="sp-col-date"></select>
+</label>
+<label>Close Column
+<select id="sp-col-close"></select>
+</label>
+<div class="form-row">
+<label>&nbsp;</label>
+<button type="button" class="btn primary" id="sp-run">Run Backtest</button>
+</div>
+</div>
+
+
+<details class="mt-1">
+<summary class="muted">Assumptions & Settings</summary>
+<div class="form-grid-3 mt-1">
+<label>Initial Capital (₹)
+<input type="number" id="sp-capital" min="0" step="1000" value="100000" />
+</label>
+<label>Commission per Trade (₹)
+<input type="number" id="sp-commission" min="0" step="1" value="20" />
+</label>
+<label>Slippage (%)
+<input type="number" id="sp-slippage" min="0" step="0.05" value="0.05" />
+</label>
+</div>
+<p class="muted small">Signals use end‑of‑day closes. Orders filled at same close adjusted by slippage. Whole‑share sizing. No shorting. One position at a time.</p>
+</details>
+</div>
+
+<div class="table-wrap mt-2">
+<table class="table">
+<thead>
+<tr>
+<th>Metric</th><th>Value</th><th>Notes</th>
+</tr>
+</thead>
+<tbody id="sp-metrics">
+<tr><td>Total Return</td><td>—</td><td class="muted">Final ÷ initial − 1</td></tr>
+<tr><td>CAGR</td><td>—</td><td class="muted">Assumes 252 trading days/year</td></tr>
+<tr><td>Max Drawdown</td><td>—</td><td class="muted">Peak‑to‑trough of equity</td></tr>
+<tr><td># Trades</td><td>—</td><td class="muted">Round‑trips</td></tr>
+<tr><td>Win Rate</td><td>—</td><td class="muted">Profitable trades</td></tr>
+</tbody>
+</table>
+</div>
+</section> -->
+<section id="capital-gains" class="card mt-2">
+<h2 class="mt-0">Capital Gains Tax – India (Equity & Others)</h2>
+<p class="muted small">Educational only. Rules simplified for post‑23 Jul 2024 changes. Excludes live prices. Verify before filing.</p>
+
+
+<form class="form" id="cg-form">
+<div class="form-grid-3">
+<label>Asset Type
+<select id="cg-asset">
+<option value="equity">Listed Equity / Equity MF / Equity ETF</option>
+<option value="other">Other Asset (Debt MF / Gold / Property / Unlisted)</option>
+</select>
+</label>
+<label>Purchase Date
+<input type="date" id="cg-buy-date" required>
+</label>
+<label>Sale Date
+<input type="date" id="cg-sell-date" required>
+</label>
+</div>
+
+
+<div class="form-grid-3 mt-1">
+<label>Buy Price / unit (₹)
+<input type="number" id="cg-buy-price" min="0" step="0.01" required>
+</label>
+<label>Sell Price / unit (₹)
+<input type="number" id="cg-sell-price" min="0" step="0.01" required>
+</label>
+<label>Quantity
+<input type="number" id="cg-qty" min="1" step="1" value="1" required>
+</label>
+</div>
+
+
+<div class="form-grid-3 mt-1">
+<label>Transfer Expenses (₹) <span class="hint">exclude STT</span>
+<input type="number" id="cg-exp" min="0" step="0.01" value="0">
+</label>
+<label>Slab Rate % (for STCG on Other Assets)
+<input type="number" id="cg-slab" min="0" max="50" step="0.1" value="30">
+</label>
+<label>Equity LTCG Exemption used elsewhere (₹)
+<input type="number" id="cg-exemption-used" min="0" step="1" value="0">
+</label>
+</div>
+
+
+<div class="cluster mt-1">
+<label class="cluster"><input type="checkbox" id="cg-apply-cess" checked> Apply 4% Health & Education Cess</label>
+<label class="cluster">Surcharge % (optional) <input type="number" id="cg-surcharge" min="0" max="37" step="1" style="width:6rem; margin-left:.5rem"></label>
+<div class="hint">Holding period & classification auto‑detected.</div>
+<div id="cg-rule-note" class="hint"></div>
+</div>
+
+
+<div class="form-row mt-1">
+<button type="button" class="btn primary" id="cg-run">Calculate Tax</button>
+<button type="button" class="btn" id="cg-reset">Reset</button>
+</div>
+</form>
+</section>
+    <!-- Holidays
     <section id="holidays" class="card mt-2">
       <h2 class="mt-0">Market Holidays & Expiry (Manual)</h2>
-<!--       <p class="muted small">You’ll update a small JSON once a year; this page renders it nicely and offers an .ics file.</p> -->
+      <p class="muted small">You’ll update a small JSON once a year; this page renders it nicely and offers an .ics file.</p>
       <div id="hol-out" class="mt-1"></div>
       <div class="btn-row mt-1">
         <a class="btn ghost" href="/data/holidays.ics" download>Download .ics</a>
       </div>
-    </section>
+    </section> -->
   </main>
 
   <!-- reuse your footer -->
   <footer class="site-footer"><div class="footer-inner">…</div></footer>
 
-  <script type="module" src="tools.js"></script>
+  <script type="module" src="/assets/js/tools.js"></script>
+  <!-- <script src="/assets/js/playground.js"></script> -->
+   <script src="/assets/js/capgains.js"></script>
+
 </body>
 </html>
-
