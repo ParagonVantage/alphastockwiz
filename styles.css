@@ -61,7 +61,7 @@ a:hover{ text-decoration: underline; }
   transition: transform .3s ease; z-index: 50; display:flex; flex-direction:column;
   box-shadow: none; will-change: transform;
 }
-.drawer.open{ transform: translateX(0); box-shadow: 18px 0 38px rgba(0,0,0,.16); }
+.drawer.open{ transform: translateX(0); box-shadow: 18px 0 38px rgba(0,0,0,.16);}
 .drawer-close{
   align-self:flex-end; background:transparent; border:0; color:#fff; font-size: 32px; padding: .5rem .75rem; cursor:pointer;
 }
