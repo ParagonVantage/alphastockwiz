@@ -24,10 +24,11 @@
       <a href="services.html" class="nav-link">Services</a>
       <a href="bio.html" class="nav-link">Bio</a>
       <a class="nav-link" href="tools.html">Tools & Calculators</a>
+       <a class="nav-link" href="top20.html">Top 20 Stocks</a>
     </nav>
     <div class="drawer-foot">
       <p class="small">SEBI Reg. No.: INH000022312<br/>Research Analyst (Part‑time)</p>
-      <a class="badge" href="INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
+      <a class="badge" href="assets/docs/INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
     </div>
   </aside>
 
@@ -36,59 +37,134 @@
       <span></span><span></span><span></span>
     </button>
     <div class="brand">
-      <h1>AlphaStockWiz</h1>
+      <h1>StockLens</h1>
       <p class="tag">Research • Reports • Insights</p>
     </div>
   </header>
 
   <main class="container">
-    <section class="card">
-      <h2>Services</h2>
-      <p class="muted">Describe offerings, scope, and engagement models.</p>
-      
-      <p>Default placeholder content. Replace this with real copy later.</p>
-    </section>
-  </main>
+  <!-- Services & Pricing -->
+  <section class="card">
+    <h2>Engagement & Pricing</h2>
+    <p class="muted">
+      We operate on a client-driven, on-demand model. Each report has a base price, with
+      transparent add-ons for depth, urgency, and special situations.
+    </p>
 
-  
-  <div class="header-ticker">
-  <div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-  </div>
+    <div class="grid-2">
+      <div class="well">
+        <h3 class="h5">Base Price (per report)</h3>
+        <p class="lead">Starts at <strong>₹5,000</strong> (example)</p>
+        <ul class="ticks">
+          <li>Standard equity research format</li>
+          <li>Executive summary + key charts</li>
+          <li>Delivery in PDF</li>
+        </ul>
+        <a class="btn primary" href="onboard.html">Start an Engagement</a>
+      </div>
+
+      <div class="well">
+        <h3 class="h5">Optional Add-Ons</h3>
+        <p class="muted">Applied as a percentage over base, depending on scope.</p>
+
+        <div class="price-table-wrap">
+          <table class="price-table" aria-label="Pricing Add-on Factors">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Factor</th>
+                <th>Why it applies</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Quarterly / Annual Results deep-dive</td>
+                <td>+20% to +30%</td>
+                <td>More data, time-series comps, commentary</td>
+              </tr>
+              <tr>
+                <td>Budget / Policy / SEBI impact note</td>
+                <td>+30% to +50%</td>
+                <td>Time-sensitive macro/policy analysis</td>
+              </tr>
+              <tr>
+                <td>Niche/Mid-cap coverage</td>
+                <td>+15% to +25%</td>
+                <td>Harder data gathering, bespoke modeling</td>
+              </tr>
+              <tr>
+                <td>Urgent turnaround (&lt; 48 hours)</td>
+                <td>+25% to +40%</td>
+                <td>Rush research &amp; prioritized delivery</td>
+              </tr>
+              <tr>
+                <td>Custom appendices (screens, comps, alt data)</td>
+                <td>+10% to +25%</td>
+                <td>Extra exhibits &amp; validation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="tiny muted mt8">
+          * Blue-chip/high-liquidity names generally billed at base. Final quote shared after brief scoping call.
+        </p>
+      </div>
+    </div>
+
+    <hr class="soft" />
+
+    <div class="examples">
+      <h3 class="h6">Example Pricing (indicative)</h3>
+      <ul class="bullets">
+        <li><strong>Regular Equity Report</strong>: ₹5,000</li>
+        <li><strong>Quarterly Results Deep-dive</strong>: ₹5,000 + 30% = ₹6,500</li>
+        <li><strong>Budget Impact + Urgent</strong>: ₹5,000 + 50% + 25% = ₹8,750</li>
+      </ul>
+      <a class="btn" href="reports.html">See Sample Outputs</a>
+    </div>
+
+    <hr class="soft" />
+
+<div class="quote-form">
+  <h3 class="h5">Request a Quote</h3>
+  <p class="muted">Fill in your details and we’ll share a tailored price for your report.</p>
+
+  <form action="mailto:agneya2208@gmail.com" method="POST" enctype="text/plain">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="Name" placeholder="Enter your name" required />
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="Email" placeholder="Enter your email" required />
+
+    <label for="stock">Stock / Report Topic</label>
+    <input type="text" id="stock" name="Stock" placeholder="e.g. Reliance Industries Q1" required />
+
+    <label>Add-ons Required:</label>
+    <div class="checkboxes">
+      <label><input type="checkbox" name="AddOns" value="Quarterly Results" /> Quarterly Results</label>
+      <label><input type="checkbox" name="AddOns" value="Budget Impact" /> Budget Impact</label>
+      <label><input type="checkbox" name="AddOns" value="Mid-cap Coverage" /> Mid-cap Coverage</label>
+      <label><input type="checkbox" name="AddOns" value="Urgent (<48h)" /> Urgent (&lt;48h)</label>
+    </div>
+
+    <label for="notes">Additional Notes</label>
+    <textarea id="notes" name="Notes" rows="4" placeholder="Any specifics or instructions"></textarea>
+
+    <button type="submit" class="btn primary">Submit Request</button>
+  </form>
 </div>
 
-<script>
-(function(){
-  const cfg = {
-    "symbols": [
-    {"proName": "NYSE:HDB",   "title": "HDFC Bank ADR"},
-    {"proName": "NYSE:INFY",  "title": "Infosys ADR"},
-    {"proName": "NYSE:WIT",   "title": "Wipro ADR"},
-    {"proName": "NYSE:IBN",   "title": "ICICI Bank ADR"},
-    {"proName": "NASDAQ:INDY","title": "iShares India 50 ETF"},
-    {"proName": "NYSE:INDA",  "title": "iShares MSCI India"},
-    {"proName": "NYSE:EPI",   "title": "WisdomTree India Earnings"},
-    {"proName": "NYSE:SMIN",  "title": "iShares MSCI India Small-Cap"}
-  ],
-    showSymbolLogo: true,
-    colorTheme: "dark",
-    isTransparent: true,
-    displayMode: "adaptive",
-    locale: "en"
-  };
-
-  const s = document.createElement('script');
-  s.src = "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-  s.async = true;
-  s.innerHTML = JSON.stringify(cfg); // <— TradingView reads this JSON from the tag
-  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
-})();
-</script>
+    <p class="legal small mt16">
+      Educational intent. Not investment advice. Markets involve risk — including loss of principal.
+    </p>
+  </section>
+</main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div>
-        <strong>AlphaStockWiz</strong><br/>
+        <strong>StockLens</strong><br/>
         <span class="muted">SEBI‑Registered Research Analyst (Part‑time)<br/>Reg. No. INH000022312</span>
       </div>
       <div class="footer-links">
