@@ -49,6 +49,25 @@
       <h2>Client Onboarding</h2>
       <p class="muted">Provide your details to begin the onboarding process. Files remain confidential and are used solely for KYC/ID verification.</p>
         <form id="onboardForm" class="form" enctype="multipart/form-data">
+            <div class="form-row">
+            <label for="legalName">Legal Name<span class="req">*</span></label>
+            <input id="legalName" name="legalName" type="text" placeholder="Full name as per ID" required />
+            </div>
+            <div class="form-grid-3">
+            <div class="form-row">
+            <label for="age">Age<span class="req">*</span></label>
+            <input id="age" name="age" type="number" min="18" max="110" placeholder="e.g., 32" required />
+            </div>
+            <div class="form-row">
+            <label for="gender">Gender<span class="req">*</span></label>
+            <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>Non‑binary</option>
+            <option>Prefer not to say</option>
+            </select>
+            </div>
           <div class="form-row">
           <label for="phone">Phone<span class="req">*</span></label>
           <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+91 98765 43210" required />
