@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <!-- EmailJS (browser SDK) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon2.JPG">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon2.JPG">
   <script defer src="app.js"></script>
@@ -46,83 +48,53 @@
     <section class="card">
       <h2>Client Onboarding</h2>
       <p class="muted">Provide your details to begin the onboarding process. Files remain confidential and are used solely for KYC/ID verification.</p>
-      <form id="onboardForm"
-      class="form"
-      action="https://formspree.io/f/YOUR_FORMSPREE_ID"
-      method="POST"
-      enctype="multipart/form-data">
-  <!-- Formspree helpers -->
-  <input type="hidden" name="_subject" value="New AlphaStockWiz Onboarding" />
-  <input type="hidden" name="_template" value="table" />
-  <!-- Optional: redirect to a thank-you page you create (thanks.html) -->
-  <!-- <input type="hidden" name="_next" value="https://your-domain.com/thanks.html" /> -->
-  <!-- Spam honeypot (kept invisible) -->
-  <input type="text" name="_gotcha" style="display:none" />
-        <div class="form-row">
-          <label for="legalName">Legal Name<span class="req">*</span></label>
-          <input id="legalName" name="legalName" type="text" placeholder="Full name as per ID" required />
-        </div>
-        <div class="form-grid-3">
+        <form id="onboardForm" class="form" enctype="multipart/form-data">
           <div class="form-row">
-            <label for="age">Age<span class="req">*</span></label>
-            <input id="age" name="age" type="number" min="18" max="110" placeholder="e.g., 32" required />
+          <label for="phone">Phone<span class="req">*</span></label>
+          <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+91 98765 43210" required />
+          </div>
           </div>
           <div class="form-row">
-            <label for="gender">Gender<span class="req">*</span></label>
-            <select id="gender" name="gender" required>
-              <option value="">Select</option>
-              <option>Female</option>
-              <option>Male</option>
-              <option>Non‑binary</option>
-              <option>Prefer not to say</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="phone">Phone<span class="req">*</span></label>
-            <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+91 98765 43210" required />
-          </div>
-        </div>
-        <div class="form-row">
           <label for="email">Email<span class="req">*</span></label>
           <input id="email" name="email" type="email" placeholder="you@example.com" required />
-        </div>
-        <div class="form-row">
+          </div>
+          <div class="form-row">
           <label for="address">Address<span class="req">*</span></label>
           <textarea id="address" name="address" placeholder="Street, City, State, PIN" rows="3" required></textarea>
-        </div>
-
-        <fieldset class="uploader">
+          </div>
+        
+          <fieldset class="uploader">
           <legend>KYC & ID Verification</legend>
           <div class="form-grid-2">
-            <div class="form-row">
-              <label for="kycFile">KYC Document<span class="req">*</span></label>
-              <input id="kycFile" name="kycFile" type="file" accept=".pdf,.png,.jpg,.jpeg" required />
-              <p class="help">Accepted: PDF/JPG/PNG. Max 5 MB.</p>
-            </div>
-            <div class="form-row">
-              <label for="aadhaarFile">Aadhaar Card (Front/Back)<span class="req">*</span></label>
-              <input id="aadhaarFile" name="aadhaarFile" type="file" accept=".pdf,.png,.jpg,.jpeg" required />
-              <p class="help">Accepted: PDF/JPG/PNG. Max 5 MB.</p>
-            </div>
+          <div class="form-row">
+          <label for="kycFile">KYC Document<span class="req">*</span></label>
+          <input id="kycFile" name="kycFile" type="file" accept=".pdf,.png,.jpg,.jpeg" required />
+          <p class="help">Accepted: PDF/JPG/PNG. Max 5 MB.</p>
           </div>
-        </fieldset>
-
-        <div class="form-row">
+          <div class="form-row">
+          <label for="aadhaarFile">Aadhaar Card (Front/Back)<span class="req">*</span></label>
+          <input id="aadhaarFile" name="aadhaarFile" type="file" accept=".pdf,.png,.jpg,.jpeg" required />
+          <p class="help">Accepted: PDF/JPG/PNG. Max 5 MB.</p>
+          </div>
+          </div>
+          </fieldset>
+          
+          <div class="form-row">
           <label class="checkbox">
-            <input type="checkbox" id="consent" name="consent" required />
-            <span>I consent to the processing of my personal data for onboarding and KYC verification.</span>
+          <input type="checkbox" id="consent" name="consent" required />
+          <span>I consent to the processing of my personal data for onboarding and KYC verification.</span>
           </label>
-        </div>
-
-        <div class="btn-row">
+          </div>
+        
+          <div class="btn-row">
           <button class="btn primary" type="submit">Submit</button>
           <button class="btn ghost" type="reset">Reset</button>
-        </div>
-        <p id="formStatus" class="status" role="status" aria-live="polite"></p>
-      </form>
-      <div class="note small">
-        <strong>Security note:</strong> For production, ensure the site runs over HTTPS with server‑side encryption at rest and strict access controls. Do not email KYC files.
-      </div>
+          </div>
+          <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="note small">
+          <strong>Security note:</strong> For production, ensure the site runs over HTTPS with server‑side encryption at rest and strict access controls. Do not email KYC files. The email contains only metadata (filenames/links); files are stored securely on your server or cloud bucket.
+          </div>
     </section>
   </main>
 
