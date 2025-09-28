@@ -1,4 +1,3 @@
-javascript
 (function(){
   // --- Drawer logic ---
   const drawer = document.querySelector('.drawer');
