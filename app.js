@@ -1,26 +1,32 @@
-(function(){
-  // --- Drawer logic ---
-  const drawer = document.querySelector('.drawer');
-  const overlay = document.getElementById('overlay');
-  const openBtn = document.getElementById('openDrawer');
+document.addEventListener('DOMContentLoaded', () => {
+  const drawer   = document.querySelector('.drawer');
+  const overlay  = document.getElementById('overlay');
+  const openBtn  = document.getElementById('openDrawer');
   const closeBtn = document.getElementById('closeDrawer');
 
   function openDrawer(){
     if(!drawer) return;
     drawer.classList.add('open');
-    overlay?.classList.add('active');
-    openBtn?.setAttribute('aria-expanded','true');
+    overlay && overlay.classList.add('active');
+    openBtn && openBtn.setAttribute('aria-expanded','true');
   }
   function closeDrawer(){
     if(!drawer) return;
     drawer.classList.remove('open');
-    overlay?.classList.remove('active');
-    openBtn?.setAttribute('aria-expanded','false');
+    overlay && overlay.classList.remove('active');
+    openBtn && openBtn.setAttribute('aria-expanded','false');
   }
-  openBtn?.addEventListener('click', openDrawer);
-  closeBtn?.addEventListener('click', closeDrawer);
-  overlay?.addEventListener('click', closeDrawer);
+
+  if(!drawer)  console.error('Drawer (.drawer) not found');
+  if(!openBtn) console.error('Open button (#openDrawer) not found');
+  if(!closeBtn)console.error('Close button (#closeDrawer) not found');
+
+  openBtn  && openBtn.addEventListener('click', openDrawer);
+  closeBtn && closeBtn.addEventListener('click', closeDrawer);
+  overlay  && overlay.addEventListener('click', closeDrawer);
   window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeDrawer(); } });
+});
+
 
   // --- EmailJS init ---
   // Replace with your EmailJS Public Key
@@ -115,7 +121,6 @@
       status.style.color = '#ef4444';
     }
   });
-})();
 
 // --- Financial Chatbot: STEVE (unchanged, kept at page bottom) ---
 (function(){
