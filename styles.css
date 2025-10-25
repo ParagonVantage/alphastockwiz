@@ -55,6 +55,96 @@ a:hover{ text-decoration: underline; }
 }
 .overlay.active{ opacity:1; pointer-events:auto; }
 
+.modal-backdrop{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(26, 32, 44, .82);
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  z-index: 90;
+}
+.modal-backdrop.visible{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.97);
+  width: min(720px, 92vw);
+  max-height: 85vh;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, .35);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 100;
+}
+.modal.visible{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 1.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-body{
+  padding: 0 1.6rem 1.6rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.modal-section + .modal-section{ margin-top: 1.2rem; }
+.modal-section h3{ margin: 0 0 .6rem; }
+.modal-section p{ margin:0; line-height:1.6; }
+.modal-section ul{ margin:0; padding-left: 1.2rem; display:grid; gap:.4rem; }
+
+.modal-close{
+  background: var(--purple);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: .45rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.modal-close:hover{ background: var(--purple-600); }
+.modal-close:focus{ outline: 2px solid var(--purple-100); outline-offset: 2px; }
+
+body.modal-open{ overflow: hidden; }
+
+@media (max-width: 600px){
+  .modal{
+    width: min(95vw, 540px);
+  }
+  .modal-head{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .modal-close{
+    align-self: flex-end;
+  }
+}
+
 .drawer{
   position: fixed; inset:0 auto 0 0; width: 310px; max-width: 90vw;
   background: #0f1020; color:#fff; transform: translateX(-100%);

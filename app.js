@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay  = document.getElementById('overlay');
   const openBtn  = document.getElementById('openDrawer');
   const closeBtn = document.getElementById('closeDrawer');
+  const charterModal    = document.getElementById('charterModal');
+  const charterBackdrop = document.getElementById('charterBackdrop');
+  const charterClose    = document.getElementById('charterClose');
+  const form            = document.getElementById('onboardForm');
+  const formControls    = form ? Array.from(form.querySelectorAll('input, select, textarea, button')) : [];
 
   function openDrawer(){
     if(!drawer) return;
@@ -17,14 +22,64 @@ document.addEventListener('DOMContentLoaded', () => {
     openBtn && openBtn.setAttribute('aria-expanded','false');
   }
 
+  function setFormDisabled(state){
+    if(!formControls.length) return;
+    formControls.forEach(control => {
+      if(state){
+        control.setAttribute('disabled', 'true');
+      } else {
+        control.removeAttribute('disabled');
+      }
+    });
+  }
+
+  function openCharter(){
+    if(!charterModal || !charterBackdrop) return;
+    setFormDisabled(true);
+    document.body.classList.add('modal-open');
+    charterBackdrop.removeAttribute('hidden');
+    charterModal.removeAttribute('hidden');
+    requestAnimationFrame(() => {
+      charterBackdrop.classList.add('visible');
+      charterModal.classList.add('visible');
+      charterClose?.focus();
+    });
+  }
+
+  function closeCharter(){
+    if(!charterModal || !charterBackdrop) return;
+    charterBackdrop.classList.remove('visible');
+    charterModal.classList.remove('visible');
+    document.body.classList.remove('modal-open');
+    setFormDisabled(false);
+    setTimeout(() => {
+      charterBackdrop.setAttribute('hidden', '');
+      charterModal.setAttribute('hidden', '');
+    }, 260);
+  }
+
   if(!drawer)  console.error('Drawer (.drawer) not found');
   if(!openBtn) console.error('Open button (#openDrawer) not found');
   if(!closeBtn)console.error('Close button (#closeDrawer) not found');
 
+  openCharter();
+
+  charterClose    && charterClose.addEventListener('click', closeCharter);
+  charterBackdrop && charterBackdrop.addEventListener('click', closeCharter);
+
   openBtn  && openBtn.addEventListener('click', openDrawer);
   closeBtn && closeBtn.addEventListener('click', closeDrawer);
   overlay  && overlay.addEventListener('click', closeDrawer);
-  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeDrawer(); } });
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){
+      const charterOpen = charterModal && !charterModal.hasAttribute('hidden');
+      if(charterOpen){
+        closeCharter();
+      } else {
+        closeDrawer();
+      }
+    }
+  });
 });
 
 
