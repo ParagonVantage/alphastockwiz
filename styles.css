@@ -185,6 +185,10 @@ body.modal-open{ overflow: hidden; }
 .hero .lead {color: var(--muted); margin-top: .25rem}
 .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
 
+.complaints{ margin-top: 1rem; }
+.complaints h3{ margin: 0 0 .6rem; }
+.complaints ul{ margin: 0; padding-left: 1.2rem; display: grid; gap: .3rem; }
+
 /* Buttons */
 .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.7rem 1rem; border-radius: 12px; border:1px solid var(--border); font-weight:600; cursor:pointer; text-decoration:none; }
 .btn.primary{ background: var(--purple); color:#fff; border-color: transparent; }
