@@ -24,8 +24,8 @@
 
   const prevEl = document.getElementById('prevPost');
   const nextEl = document.getElementById('nextPost');
-  if (prev) { prevEl.href = `../${prev.path}`; prevEl.style.visibility = 'visible'; }
+  if (prev) { prevEl.href = `../${prev.path}`; prevEl.removeAttribute('aria-disabled'); prevEl.style.visibility = 'visible'; }
   else { prevEl.style.visibility = 'hidden'; }
-  if (next) { nextEl.href = `../${next.path}`; nextEl.style.visibility = 'visible'; }
+  if (next) { nextEl.href = `../${next.path}`; nextEl.removeAttribute('aria-disabled'); nextEl.style.visibility = 'visible'; }
   else { nextEl.style.visibility = 'hidden'; }
 })();

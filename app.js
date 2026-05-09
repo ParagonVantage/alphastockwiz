@@ -123,17 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Validate sizes; if too big, stop submission
     if (kyc && kyc.size > MAX) {
       status.textContent = `KYC file exceeds the 5 MB limit (got ${bytesToMB(kyc.size)} MB)`;
-      status.style.color = '#ef4444';
+      status.style.color = '#b91c1c';
       return;
     }
     if (aad && aad.size > MAX) {
       status.textContent = `Aadhaar file exceeds the 5 MB limit (got ${bytesToMB(aad.size)} MB)`;
-      status.style.color = '#ef4444';
+      status.style.color = '#b91c1c';
       return;
     }
 
     status.textContent = 'Uploading (if enabled) and submitting...';
-    status.style.color = '#6b7280';
+    status.style.color = '#4b5563';
 
     // Optional uploads
     const [kycUrl, aadUrl] = await Promise.all([
@@ -168,12 +168,12 @@ document.addEventListener('DOMContentLoaded', () => {
       await emailjs.send(serviceId, templateId, payload);
 
       status.textContent = '✅ Form submitted successfully! We\'ll contact you soon.';
-      status.style.color = '#10b981';
+      status.style.color = '#047857';
       form.reset();
     } catch (err) {
       console.error('EmailJS error:', err);
       status.textContent = '❌ Submission failed. Please try again or email us directly.';
-      status.style.color = '#ef4444';
+      status.style.color = '#b91c1c';
     }
   });
 
@@ -192,7 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="steve-header">STEVE</div>
     <div id="steveMessages" class="steve-messages" aria-live="polite"></div>
     <form id="steveForm" class="steve-form">
-      <input id="steveInput" type="text" placeholder="Ask about markets..." autocomplete="off" />
+      <label class="sr-only" for="steveInput">Ask STEVE about markets</label>
+      <input id="steveInput" name="steveQuestion" type="text" placeholder="Ask about markets..." autocomplete="off" />
       <button type="submit">Send</button>
     </form>
   `;
