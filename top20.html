@@ -57,6 +57,29 @@
       background: linear-gradient(0deg, var(--white), var(--white));
     }
 
+    .table-scroller:focus{
+      outline: 3px solid var(--purple-700);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      background: var(--white);
+      color: var(--purple-900);
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(58,35,121,0.16);
+      font-weight: 600;
+    }
+
+    .skip-link:focus {
+      left: 16px;
+      top: 16px;
+      z-index: 9999;
+    }
+
     table.asw{
       width: 100%;
       border-collapse: collapse;
@@ -150,7 +173,8 @@ a.pdf-link.locked:hover::after {
   </style>
 </head>
 <body>
-  <main class="wrap">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main" class="wrap">
     <h1 class="title">Top 20 NSE/BSE Stocks for Trading — August&nbsp;2025</h1>
     <p class="subtitle">Curated for liquidity &amp; derivatives depth. Replace the placeholder PDF links with your own reports.</p>
     <p class="explain">
@@ -159,7 +183,7 @@ a.pdf-link.locked:hover::after {
 </p>
 
     <section class="table-card">
-      <div class="table-scroller">
+      <div class="table-scroller" tabindex="0" role="region" aria-label="Top 20 stocks table">
         <table class="asw" aria-label="Top 20 NSE/BSE Trading Stocks as of August 2025">
           <thead>
             <tr>
