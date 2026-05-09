@@ -118,7 +118,7 @@
         <form id="onboardForm" class="form" enctype="multipart/form-data">
             <div class="form-row">
             <label for="legalName">Legal Name<span class="req">*</span></label>
-            <input id="legalName" name="legalName" type="text" placeholder="Full name as per ID" required />
+            <input id="legalName" name="legalName" type="text" autocomplete="name" placeholder="Full name as per ID" required />
             </div>
             <div class="form-grid-3">
             <div class="form-row">
@@ -127,7 +127,7 @@
             </div>
             <div class="form-row">
             <label for="gender">Gender<span class="req">*</span></label>
-            <select id="gender" name="gender" required>
+            <select id="gender" name="gender" autocomplete="sex" required>
             <option value="">Select</option>
             <option>Female</option>
             <option>Male</option>
@@ -137,16 +137,16 @@
             </div>
           <div class="form-row">
           <label for="phone">Phone<span class="req">*</span></label>
-          <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+91 98765 43210" required />
+          <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210" required />
           </div>
           </div>
           <div class="form-row">
           <label for="email">Email<span class="req">*</span></label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
           </div>
           <div class="form-row">
           <label for="address">Address<span class="req">*</span></label>
-          <textarea id="address" name="address" placeholder="Street, City, State, PIN" rows="3" required></textarea>
+          <textarea id="address" name="address" autocomplete="street-address" placeholder="Street, City, State, PIN" rows="3" required></textarea>
           </div>
         
           <fieldset class="uploader">
@@ -191,10 +191,10 @@
         <span class="muted">SEBI‑Registered Research Analyst (Part‑time)<br/>Reg. No. INH000022312</span>
       </div>
       <div class="footer-links">
-        <a href="onboard.html">Start Onboarding</a>
-        <a href="reports.html">Latest Reports</a>
+        <a href="onboard.html">Client Onboarding</a>
+        <a href="reports.html">Reports</a>
         <a href="services.html">Services</a>
-        <a href="bio.html">About</a>
+        <a href="bio.html">Bio</a>
       </div>
     </div>
     <div class="legal small">
