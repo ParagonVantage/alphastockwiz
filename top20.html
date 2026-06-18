@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
   <style>
     :root{
       --purple-900:#3a2379;
@@ -174,6 +176,38 @@ a.pdf-link.locked:hover::after {
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+  <aside class="drawer" aria-label="Site">
+    <button class="drawer-close" id="closeDrawer" aria-label="Close navigation"><span aria-hidden="true">&times;</span></button>
+    <nav class="drawer-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="onboard.html" class="nav-link">Client Onboarding</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="bio.html" class="nav-link">Bio</a>
+      <a class="nav-link" href="tools.html">Tools & Calculators</a>
+      <a class="nav-link" href="top20.html">Top 20 Stocks</a>
+      <a class="nav-link" href="sitemap.html">Sitemap</a>
+    </nav>
+    <div class="drawer-foot">
+      <p class="small">SEBI Reg. No.: INH000022312<br/>Research Analyst (Part-time)</p>
+      <a class="badge" href="INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <nav class="header-menu" aria-label="Menu">
+      <button id="openDrawer" class="hamburger" aria-label="Open navigation" aria-controls="overlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="brand">
+      <h1>AlphaStockWiz</h1>
+      <p class="tag">Research - Reports - Insights</p>
+    </div>
+  </header>
+
   <main id="main" class="wrap">
     <h1 class="title">Top 20 NSE/BSE Stocks for Trading — August&nbsp;2025</h1>
     <p class="subtitle">Curated for liquidity &amp; derivatives depth. Replace the placeholder PDF links with your own reports.</p>
