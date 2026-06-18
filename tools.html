@@ -22,8 +22,9 @@
       <a href="blog.html" class="nav-link">Blog</a>
       <a href="services.html" class="nav-link">Services</a>
       <a href="bio.html" class="nav-link">Bio</a>
-      <a href="tools.html">Tools & Calculators</a>
-      <a href="top20.html">Top 20 Stocks</a>
+      <a class="nav-link" href="tools.html">Tools & Calculators</a>
+      <a class="nav-link" href="top20.html">Top 20 Stocks</a>
+      <a class="nav-link" href="sitemap.html">Sitemap</a>
     </nav>
     
     <div class="drawer-foot">
@@ -33,9 +34,11 @@
   </aside>
 
   <header class="site-header">
-    <button id="openDrawer" class="hamburger" aria-label="Open navigation" aria-controls="overlay" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <nav class="header-menu" aria-label="Menu">
+      <button id="openDrawer" class="hamburger" aria-label="Open navigation" aria-controls="overlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
     <div class="brand">
       <h1>AlphaStockWiz</h1>
       <p class="tag">Research • Reports • Insights</p>
@@ -51,24 +54,23 @@
       <form class="form" id="ps-form">
         <div class="form-grid-3">
           <label>Capital (₹)
-            <input type="number" id="ps-capital" min="0" step="0.01" required>
+            <input type="number" id="ps-capital" name="ps-capital" autocomplete="off" min="0" step="0.01" required>
           </label>
           <label>Risk % per trade
-            <input type="number" id="ps-risk" min="0" max="100" step="0.1" value="1" required>
+            <input type="number" id="ps-risk" name="ps-risk" autocomplete="off" min="0" max="100" step="0.1" value="1" required>
           </label>
           <label>Entry Price (₹)
-            <input type="number" id="ps-entry" min="0" step="0.01" required>
+            <input type="number" id="ps-entry" name="ps-entry" autocomplete="off" min="0" step="0.01" required>
           </label>
         </div>
         <div class="form-grid-3">
           <label>Stop‑Loss Price (₹)
-            <input type="number" id="ps-stop" min="0" step="0.01" required>
+            <input type="number" id="ps-stop" name="ps-stop" autocomplete="off" min="0" step="0.01" required>
           </label>
           <label>Lot Size (optional)
-            <input type="number" id="ps-lot" min="1" step="1" placeholder="e.g., 25">
+            <input type="number" id="ps-lot" name="ps-lot" autocomplete="off" min="1" step="1" placeholder="e.g., 25">
           </label>
-          <div class="form-row">
-            <label>&nbsp;</label>
+          <div class="form-row form-action">
             <button type="button" class="btn primary" id="ps-run">Calculate</button>
           </div>
         </div>
@@ -81,7 +83,7 @@
               <td data-label="Qty"><span class="skeleton" style="display:inline-block;width:80px;height:16px;"></span></td>
               <td data-label="Max Loss"><span class="skeleton" style="display:inline-block;width:120px;height:16px;"></span></td>
               <td data-label="R:R at Target">
-                <input type="number" id="ps-target" step="0.01" aria-label="Target price" placeholder="Target price (₹)" class="input mt-1" />
+                <input type="number" id="ps-target" name="ps-target" autocomplete="off" step="0.01" aria-label="Target price" placeholder="Target price (₹)" class="input mt-1" />
                 <div id="ps-rr" class="muted mt-1">—</div>
               </td>
             </tr>
@@ -96,20 +98,20 @@
       <form class="form" id="sip-form">
         <div class="form-grid-3">
           <label>Monthly SIP (₹)
-            <input type="number" id="sip-amount" min="0" step="1" required>
+            <input type="number" id="sip-amount" name="sip-amount" autocomplete="off" min="0" step="1" required>
           </label>
           <label>Expected Return % (annual)
-            <input type="number" id="sip-rate" min="0" step="0.1" value="12" required>
+            <input type="number" id="sip-rate" name="sip-rate" autocomplete="off" min="0" step="0.1" value="12" required>
           </label>
           <label>Years
-            <input type="number" id="sip-years" min="1" step="1" value="10" required>
+            <input type="number" id="sip-years" name="sip-years" autocomplete="off" min="1" step="1" value="10" required>
           </label>
         </div>
         <div class="form-grid-3">
           <label>Yearly Step‑Up % (optional)
-            <input type="number" id="sip-step" min="0" step="0.5" placeholder="e.g., 5">
+            <input type="number" id="sip-step" name="sip-step" autocomplete="off" min="0" step="0.5" placeholder="e.g., 5">
           </label>
-          <div class="form-row"><label>&nbsp;</label><button type="button" class="btn primary" id="sip-run">Calculate</button></div>
+          <div class="form-row form-action"><button type="button" class="btn primary" id="sip-run">Calculate</button></div>
         </div>
       </form>
       <div class="status" id="sip-out" aria-live="polite"></div>
@@ -122,21 +124,21 @@
       <form class="form" id="chg-form">
         <div class="form-grid-3">
           <label>Turnover (₹ buy+sell)
-            <input type="number" id="chg-turnover" min="0" step="0.01" required>
+            <input type="number" id="chg-turnover" name="chg-turnover" autocomplete="off" min="0" step="0.01" required>
           </label>
           <label>STT % (edit)
-            <input type="number" id="chg-stt" min="0" step="0.001" value="0.1">
+            <input type="number" id="chg-stt" name="chg-stt" autocomplete="off" min="0" step="0.001" value="0.1">
           </label>
           <label>Brokerage (₹ or %)
-            <input type="text" id="chg-broker" placeholder="e.g., 20 or 0.03%">
+            <input type="text" id="chg-broker" name="chg-broker" autocomplete="off" placeholder="e.g., 20 or 0.03%">
           </label>
         </div>
         <div class="form-grid-2">
           <label>Stamp Duty % (edit)
-            <input type="number" id="chg-stamp" min="0" step="0.001" value="0.003">
+            <input type="number" id="chg-stamp" name="chg-stamp" autocomplete="off" min="0" step="0.001" value="0.003">
           </label>
           <label>GST % on charges
-            <input type="number" id="chg-gst" min="0" step="0.1" value="18">
+            <input type="number" id="chg-gst" name="chg-gst" autocomplete="off" min="0" step="0.1" value="18">
           </label>
         </div>
         <button type="button" class="btn primary" id="chg-run">Estimate</button>
@@ -171,8 +173,7 @@
 <label>Close Column
 <select id="sp-col-close"></select>
 </label>
-<div class="form-row">
-<label>&nbsp;</label>
+<div class="form-row form-action">
 <button type="button" class="btn primary" id="sp-run">Run Backtest</button>
 </div>
 </div>
@@ -220,49 +221,49 @@
 <form class="form" id="cg-form">
 <div class="form-grid-3">
 <label>Asset Type
-<select id="cg-asset">
+<select id="cg-asset" name="cg-asset" autocomplete="off">
 <option value="equity">Listed Equity / Equity MF / Equity ETF</option>
 <option value="other">Other Asset (Debt MF / Gold / Property / Unlisted)</option>
 </select>
 </label>
 <label>Purchase Date
-<input type="date" id="cg-buy-date" required>
+<input type="date" id="cg-buy-date" name="cg-buy-date" autocomplete="off" required>
 </label>
 <label>Sale Date
-<input type="date" id="cg-sell-date" required>
+<input type="date" id="cg-sell-date" name="cg-sell-date" autocomplete="off" required>
 </label>
 </div>
 
 
 <div class="form-grid-3 mt-1">
 <label>Buy Price / unit (₹)
-<input type="number" id="cg-buy-price" min="0" step="0.01" required>
+<input type="number" id="cg-buy-price" name="cg-buy-price" autocomplete="off" min="0" step="0.01" required>
 </label>
 <label>Sell Price / unit (₹)
-<input type="number" id="cg-sell-price" min="0" step="0.01" required>
+<input type="number" id="cg-sell-price" name="cg-sell-price" autocomplete="off" min="0" step="0.01" required>
 </label>
 <label>Quantity
-<input type="number" id="cg-qty" min="1" step="1" value="1" required>
+<input type="number" id="cg-qty" name="cg-qty" autocomplete="off" min="1" step="1" value="1" required>
 </label>
 </div>
 
 
 <div class="form-grid-3 mt-1">
 <label>Transfer Expenses (₹) <span class="hint">exclude STT</span>
-<input type="number" id="cg-exp" min="0" step="0.01" value="0">
+<input type="number" id="cg-exp" name="cg-exp" autocomplete="off" min="0" step="0.01" value="0">
 </label>
 <label>Slab Rate % (for STCG on Other Assets)
-<input type="number" id="cg-slab" min="0" max="50" step="0.1" value="30">
+<input type="number" id="cg-slab" name="cg-slab" autocomplete="off" min="0" max="50" step="0.1" value="30">
 </label>
 <label>Equity LTCG Exemption used elsewhere (₹)
-<input type="number" id="cg-exemption-used" min="0" step="1" value="0">
+<input type="number" id="cg-exemption-used" name="cg-exemption-used" autocomplete="off" min="0" step="1" value="0">
 </label>
 </div>
 
 
 <div class="cluster mt-1">
-<label class="cluster"><input type="checkbox" id="cg-apply-cess" checked> Apply 4% Health & Education Cess</label>
-<label class="cluster">Surcharge % (optional) <input type="number" id="cg-surcharge" min="0" max="37" step="1" style="width:6rem; margin-left:.5rem"></label>
+<label class="cluster"><input type="checkbox" id="cg-apply-cess" name="cg-apply-cess" checked> Apply 4% Health & Education Cess</label>
+<label class="cluster">Surcharge % (optional) <input type="number" id="cg-surcharge" name="cg-surcharge" autocomplete="off" min="0" max="37" step="1" style="width:6rem; margin-left:.5rem"></label>
 <div class="hint">Holding period & classification auto‑detected.</div>
 <div id="cg-rule-note" class="hint"></div>
 </div>

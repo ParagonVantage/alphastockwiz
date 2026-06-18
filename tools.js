@@ -32,7 +32,7 @@ const number = v => {
         <td data-label="Qty">${qty.toLocaleString('en-IN')}</td>
         <td data-label="Max Loss">₹ ${maxLoss.toLocaleString('en-IN', {maximumFractionDigits:2})}</td>
         <td data-label="R:R at Target">
-          <input type="number" id="ps-target" step="0.01" aria-label="Target price" placeholder="Target price (₹)" class="input mt-1" />
+          <input type="number" id="ps-target" name="ps-target" autocomplete="off" step="0.01" aria-label="Target price" placeholder="Target price (₹)" class="input mt-1" />
           <div id="ps-rr" class="muted mt-1">—</div>
         </td>
       </tr>
