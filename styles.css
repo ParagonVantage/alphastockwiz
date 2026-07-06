@@ -713,6 +713,12 @@ main [id]::before {
   font-size: 14px;
   color: #3a2379;
 }
+.quote-form-label {
+  margin: 10px 0 4px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #3a2379;
+}
 
 .quote-form input[type="text"],
 .quote-form input[type="email"],
@@ -811,6 +817,7 @@ main [id]::before {
   background: #fef3c7; color: #92400e; padding: .25rem .5rem; border-radius: .5rem;
 }
 .report-title { margin: 0; font-size: 1.05rem; }
+.report-card-title { margin: 0; font-size: 1.05rem; line-height: 1.35; }
 .report-sub { margin: 0; color: #6b7280; font-size: .9rem; }
 
 .report-highlights { margin: .25rem 0 0; padding-left: 1.1rem; color: #111827; }

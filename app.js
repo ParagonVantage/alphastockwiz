@@ -179,11 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- Financial Chatbot: STEVE (unchanged, kept at page bottom) ---
 (function(){
+  const steveRegion = document.createElement('aside');
+  steveRegion.className = 'steve-region';
+  steveRegion.setAttribute('aria-label', 'STEVE financial assistant');
+  document.body.appendChild(steveRegion);
+
   const steveBtn = document.createElement('button');
   steveBtn.id = 'steveToggle';
   steveBtn.className = 'steve-toggle';
   steveBtn.textContent = 'Chat with STEVE';
-  document.body.appendChild(steveBtn);
+  steveRegion.appendChild(steveBtn);
 
   const steveWindow = document.createElement('div');
   steveWindow.id = 'steveWindow';
@@ -197,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <button type="submit">Send</button>
     </form>
   `;
-  document.body.appendChild(steveWindow);
+  steveRegion.appendChild(steveWindow);
 
   steveBtn.addEventListener('click', () => {
     steveWindow.classList.toggle('open');
