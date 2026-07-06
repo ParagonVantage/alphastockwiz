@@ -36,6 +36,9 @@ a:hover{ text-decoration: underline; }
   padding-bottom: max(4rem, env(safe-area-inset-bottom));
 }
 .brand h1{ margin:0; font-size: clamp(1.6rem, 2.8vw, 2.4rem); font-weight:700; letter-spacing: .3px; }
+.brand h1 a{ color: inherit; text-decoration: none; }
+.brand h1 a:hover{ text-decoration: none; }
+.brand h1 a:focus-visible{ outline: 2px solid #fff; outline-offset: 4px; border-radius: 8px; }
 .brand .tag{ margin:.15rem 0 0; opacity:1; }
 
 /* Hamburger */
