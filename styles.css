@@ -569,9 +569,11 @@ main [id]::before {
   margin-top: -80px;
   visibility: hidden;
 }
-.reports-grid::before {
+main #reportsGrid::before {
   content: none;
   display: none;
+  height: 0;
+  margin-top: 0;
 }
 .modal [id]::before {
   content: none;
