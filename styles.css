@@ -569,6 +569,10 @@ main [id]::before {
   margin-top: -80px;
   visibility: hidden;
 }
+.reports-grid::before {
+  content: none;
+  display: none;
+}
 .modal [id]::before {
   content: none;
   display: none;
