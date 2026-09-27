@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AlphaStockWiz</title>
+  <title>Complaints Data | AlphaStockWiz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
     </nav>
     <div class="drawer-foot">
       <p class="small">SEBI Reg. No.: INH000022312<br/>Research Analyst (Part‑time)</p>
-      <a class="badge" href="assets/docs/INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
+      <a class="badge" href="INH000022312_SHILPA.pdf" target="_blank" rel="noopener">View Certificate (PDF)</a>
     </div>
   </aside>
 
@@ -47,19 +47,69 @@
     </div>
   </header>
 
+
+  <div class="header-ticker">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const cfg = {
+    "symbols": [
+    {"proName": "NYSE:HDB",   "title": "HDFC Bank ADR"},
+    {"proName": "NYSE:INFY",  "title": "Infosys ADR"},
+    {"proName": "NYSE:WIT",   "title": "Wipro ADR"},
+    {"proName": "NYSE:IBN",   "title": "ICICI Bank ADR"},
+    {"proName": "NASDAQ:INDY","title": "iShares India 50 ETF"},
+    {"proName": "NYSE:INDA",  "title": "iShares MSCI India"},
+    {"proName": "NYSE:EPI",   "title": "WisdomTree India Earnings"},
+    {"proName": "NYSE:SMIN",  "title": "iShares MSCI India Small-Cap"}
+  ],
+    showSymbolLogo: true,
+    colorTheme: "dark",
+    isTransparent: true,
+    displayMode: "adaptive",
+    locale: "en"
+  };
+
+  const s = document.createElement('script');
+  s.src = "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+  s.async = true;
+  s.innerHTML = JSON.stringify(cfg); // <— TradingView reads this JSON from the tag
+  document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+})();
+</script>
+  
   <main id="main" class="container">
-    <section class="card">
-      <h2>About / Bio</h2>
-      <p class="muted">A brief professional biography and methodology will appear here.</p>
-      
-      <p>Default placeholder content. Replace this with real copy later.</p>
+    <section class="reports-hero">
+      <h1>Complaints Data</h1>
+      <p class="muted">Monthly investor grievance disclosures from AlphaStockWiz.</p>
+    </section>
+    <section aria-label="Monthly grievance disclosure">
+    <!-- SEBI RA grievance disclosure -->
+    <article class="report-card">
+    <div class="card-top">
+      <span class="badge">Regulatory Disclosure</span>
+      <span class="badge">SEBI RA</span>
+    </div>
+    <h2 class="report-card-title">SEBI RA Monthly Grievance Disclosure</h2>
+    <p class="snippet">
+      Monthly grievance disclosure register for AlphaStockWiz Research Analyst compliance, including investor, SEBI SCORES, and other-source grievance categories.
+    </p>
+    <div class="actions">
+      <a class="pdf-link" href="SEBI_RA_Monthly_Grievance_Disclosure.xlsx" download>Download SEBI RA Monthly Grievance Disclosure spreadsheet</a>
+    </div>
+  </article>
+
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div>
-        <strong>AlphaStockWiz</strong><br/>
+        <strong>AllphaStockWiz</strong><br/>
         <span class="muted">SEBI‑Registered Research Analyst (Part‑time)<br/>Reg. No. INH000022312</span>
       </div>
       <div class="footer-links">
@@ -77,3 +127,4 @@
   </footer>
 </body>
 </html>
+
